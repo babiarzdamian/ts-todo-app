@@ -5,7 +5,10 @@ const tasksContainerElement: HTMLElement = document.querySelector('.tasks');
 interface Task {
     name: string;
     done: boolean;
+    category?: string;
 }
+
+const category: string[] = ['general', 'work', 'gym', 'work'];
 
 const tasks: Task[] = [
     {
@@ -13,7 +16,7 @@ const tasks: Task[] = [
         done: false,
     },
     { name: 'feed the cat', done: true },
-    { name: 'go to gym', done: false },
+    { name: 'go to gym', done: false, category: 'gym' },
 ];
 
 const render = () => {
@@ -21,6 +24,9 @@ const render = () => {
     tasks.forEach((task, index) => {
         const id: string = `task-${index}`;
         const taskElement: HTMLElement = document.createElement('li');
+        if (task.category) {
+            taskElement.classList.add(task.category);
+        }
 
         const labelElement: HTMLLabelElement = document.createElement('label');
         labelElement.innerText = task.name;
@@ -56,6 +62,6 @@ addButtonElement.addEventListener('click', (e) => {
     render();
 });
 
-addTask({ name: 'task from Boss', done: true });
+addTask({ name: 'task from Boss', done: true, category: 'work' });
 
 render();
