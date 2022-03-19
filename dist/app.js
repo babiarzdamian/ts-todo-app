@@ -5,7 +5,7 @@ const addButtonElement = document.querySelector('button');
 const tasksContainerElement = document.querySelector('.tasks');
 const categoriesContainerElement = document.querySelector('.categories');
 let selectedCategory;
-const categories = ['general', 'work', 'gym', 'hobby'];
+const categories = ['general', 'work', 'gym', 'hobby', 'social'];
 const tasks = [
     {
         name: 'take trash out',

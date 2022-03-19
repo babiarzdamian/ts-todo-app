@@ -1,5 +1,22 @@
 import { Category } from '../types/types';
 
+const handleCategoryChange = (category: Category) => {
+    if (category === 'general') {
+        document.body.style.background = '#434444';
+    } else if (category === 'gym') {
+        document.body.style.background = 'pink';
+    } else if (category === 'hobby') {
+        document.body.style.background = 'olive';
+    } else if (category === 'work') {
+        document.body.style.background = 'black';
+    } else if (category === 'social') {
+        document.body.style.background = 'orchid';
+    } else {
+        const never: never = category;
+        console.log(never);
+    }
+};
+
 export const render = (
     categories: Category[],
     categoriesContainerElement: HTMLElement,
@@ -16,6 +33,7 @@ export const render = (
         radioInputElement.id = `cateogry-${category}`;
         radioInputElement.addEventListener('change', () => {
             inputChangeCallback(category);
+            handleCategoryChange(category);
         });
 
         const radioLabelElement: HTMLLabelElement =
