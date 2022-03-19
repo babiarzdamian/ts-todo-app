@@ -1,7 +1,9 @@
 const taskNameInputElement = document.querySelector('#name');
 const addButtonElement = document.querySelector('button');
 const tasksContainerElement = document.querySelector('.tasks');
-const category = ['general', 'work', 'gym', 'work'];
+const categoriesContainerElement = document.querySelector('.categories');
+let selectedCategory;
+const categories = ['general', 'work', 'gym', 'hobby'];
 const tasks = [
     {
         name: 'take trash out',
@@ -32,14 +34,38 @@ const render = () => {
         tasksContainerElement.appendChild(taskElement);
     });
 };
+const renderCategories = () => {
+    categories.forEach((category) => {
+        const categoryElement = document.createElement('li');
+        const radioInputElement = document.createElement('input');
+        radioInputElement.type = 'radio';
+        radioInputElement.name = 'category';
+        radioInputElement.value = category;
+        radioInputElement.id = `cateogry-${category}`;
+        radioInputElement.addEventListener('change', () => {
+            selectedCategory = category;
+        });
+        const radioLabelElement = document.createElement('label');
+        radioLabelElement.innerText = category;
+        radioLabelElement.setAttribute('for', `cateogry-${category}`);
+        categoryElement.appendChild(radioInputElement);
+        categoryElement.appendChild(radioLabelElement);
+        categoriesContainerElement.appendChild(categoryElement);
+    });
+};
 const addTask = (task) => {
     tasks.push(task);
 };
 addButtonElement.addEventListener('click', (e) => {
     e.preventDefault();
-    addTask({ name: taskNameInputElement.value, done: false });
+    addTask({
+        name: taskNameInputElement.value,
+        done: false,
+        category: selectedCategory,
+    });
     taskNameInputElement.value = '';
     render();
 });
 addTask({ name: 'task from Boss', done: true, category: 'work' });
+renderCategories();
 render();
