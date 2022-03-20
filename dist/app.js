@@ -1,6 +1,7 @@
 import { Category } from './types/types.js';
 import renderTasks from './helpers/render-tasks.helper.js';
 import { render as renderCategories } from './helpers/render-categories.helper.js';
+import { TaskClass } from './types/classes/task.js';
 const taskNameInputElement = document.querySelector('#name');
 const addButtonElement = document.querySelector('button');
 const tasksContainerElement = document.querySelector('.tasks');
@@ -45,3 +46,5 @@ addTask({ name: taskName, category: taskCategory, done: taskDone });
 addTask({ name: 'task from Boss', done: true, category: Category.WORK });
 renderCategories(categories, categoriesContainerElement, updateSelectedCategory);
 renderTasks(tasks, tasksContainerElement);
+const taskClassInstance = new TaskClass('Task from Class', false);
+taskClassInstance.logCreationDate('!');
