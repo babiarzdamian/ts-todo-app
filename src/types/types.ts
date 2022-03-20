@@ -1,5 +1,5 @@
 export enum Category {
-    GENERAL = 'genera;',
+    GENERAL = 'general',
     WORK = 'work',
     GYM = 'gym',
     HOBBY = 'hobby',
