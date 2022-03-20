@@ -1,17 +1,18 @@
+import { Category } from '../types/types.js';
 const handleCategoryChange = (category) => {
-    if (category === 'general') {
+    if (category === Category.GENERAL) {
         document.body.style.background = '#434444';
     }
-    else if (category === 'gym') {
+    else if (category === Category.GYM) {
         document.body.style.background = 'pink';
     }
-    else if (category === 'hobby') {
+    else if (category === Category.HOBBY) {
         document.body.style.background = 'olive';
     }
-    else if (category === 'work') {
+    else if (category === Category.WORK) {
         document.body.style.background = 'black';
     }
-    else if (category === 'social') {
+    else if (category === Category.SOCIAl) {
         document.body.style.background = 'orchid';
     }
     else {

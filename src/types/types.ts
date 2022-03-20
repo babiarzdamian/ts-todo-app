@@ -1,4 +1,10 @@
-export type Category = 'general' | 'work' | 'gym' | 'hobby' | 'social';
+export enum Category {
+    GENERAL = 'genera;',
+    WORK = 'work',
+    GYM = 'gym',
+    HOBBY = 'hobby',
+    SOCIAl = 'social',
+}
 
 export interface Task {
     name: string;
