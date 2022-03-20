@@ -1,4 +1,4 @@
-import { Category } from '../types.js';
+import { Category } from '../types/types.js';
 
 export class TaskClass {
     name: string = 'New task';

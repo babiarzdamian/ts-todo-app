@@ -20,12 +20,9 @@ const categories: Category[] = [
 ];
 
 const tasks: Task[] = [
-    {
-        name: 'take trash out',
-        done: false,
-    },
-    { name: 'feed the cat', done: true },
-    { name: 'go to gym', done: false, category: Category.GYM },
+    new Task('take trash out', false),
+    new Task('feed the cat', true),
+    new Task('go to gym', false, Category.GYM),
 ];
 
 const addTask = (task: Task) => {
@@ -39,11 +36,13 @@ const updateSelectedCategory = (newCategory: Category) => {
 addButtonElement.addEventListener('click', (e) => {
     e.preventDefault();
 
-    addTask({
-        name: taskNameInputElement.value,
-        done: false,
-        category: selectedCategory,
-    });
+    const newTask: Task = new Task(
+        taskNameInputElement.value,
+        false,
+        selectedCategory
+    );
+    addTask(newTask);
+    newTask.logCreationDate('!!!');
     taskNameInputElement.value = '';
 
     renderTasks(tasks, tasksContainerElement);
@@ -57,9 +56,8 @@ const taskName = task[0];
 const taskCategory = task[1];
 const taskDone = task[2];
 
-addTask({ name: taskName, category: taskCategory, done: taskDone });
-
-addTask({ name: 'task from Boss', done: true, category: Category.WORK });
+addTask(new Task(taskName, taskDone, taskCategory));
+addTask(new Task('task from Boss', true, Category.WORK));
 
 renderCategories(
     categories,
